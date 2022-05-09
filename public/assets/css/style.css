@@ -1,0 +1,106 @@
+.element{
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  display: grid;
+  overflow-y: scroll;
+  margin: 1%;
+  padding: 1%;
+}
+
+
+.action{
+  margin: 5px;
+  padding: 5px;
+}
+
+.contentPage-headerIndex, .contentPage-headerShow{
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.contentPage-headerEdit{
+  display: flex;
+  width: 100%;
+}
+
+.contentPage-headerEdit > h1, .contentPage-headerEdit > a{
+  padding: 10px;
+}
+
+.profilImage{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.icon-pencil, .icon-eye{
+  margin: 0px;
+  padding: 10px;
+  background: none;
+  border-radius: 100%;
+}
+
+.icon-pencil{
+  color: crimson;
+}
+
+.icon-add {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.contentPage-headerShow-left, .contentPage-headerShow-right{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+}
+
+.contentPage-headerShow-left > h1{
+  padding-left: 20px;
+}
+
+
+.btn-delete{
+  color: red;
+}
+
+.btn-delete:hover{
+  background-color: red;
+  color: #fff;
+}
+
+.btn-save{
+  color: green;
+}
+
+.btn-save:hover{
+  background-color: green;
+  color: #fff;
+}
+/* tr, th, td{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.imageTable{
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+} */
+
+.selectField{
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: 1px solid lightgray;
+  color: gray;
+  border-radius: 5px;
+}
+

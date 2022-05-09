@@ -1,0 +1,499 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Broker Dashboard{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<!-- Content area -->
+			<div class="content">
+    			{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+				<!-- Main charts -->
+				<div class="row">
+					<div class="col-xl-7">
+						
+							<!-- Traffic sources -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">Data controller</h6>
+									<div class="header-elements">
+										<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-switchery" checked data-fouc>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body py-0">
+									<div class="row">
+										
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/image/new" class="btn bg-transparent border-teal text-teal rounded-round border-2 btn-icon mr-3">
+													<i class="icon-plus3"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">New Image</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ images|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/item/new" class="btn bg-transparent border-warning-400 text-warning-400 rounded-round border-2 btn-icon mr-3">
+													<i class="icon-plus3"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">New Item</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ items|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/categorie/new" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon mr-3">
+													<i class="icon-plus3"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">New Categorie</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ categories|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										
+									</div>
+								</div>
+
+								<div class="chart position-relative" id="traffic-sources"></div>
+							</div>
+							<!-- /traffic sources -->
+
+							<!-- Traffic sources -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">All elements </h6>
+									<div class="header-elements">
+										<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-switchery" checked data-fouc>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body py-0">
+									<table id="example" class="display table" style="width:100%">
+										<thead>
+											<tr>
+												<th>images</th>
+												<th>Label</th>
+												<th>Price</th>
+												<th>CreatedAt</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for item in items %}
+											<tr>
+												<td>
+													{% for image in item.images %}
+														<img  class="profilImage" src="{{ asset('uploads/' ~ image.path ) }}"/>
+													{% else %}
+														<p colspan="6">no images found</p>
+													{% endfor %}
+												</td>
+												<td>{{ item.label }}</td>
+												<td>{{ item.price }}</td>
+												<td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											
+										{% else %}
+											<tr>
+												<td colspan="6">no records found</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="chart position-relative" id="traffic-sources"></div>
+							</div>
+							<!-- /traffic sources -->
+
+							<!-- Traffic sources -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">All Categories</h6>
+									<div class="header-elements">
+										<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-switchery" checked data-fouc>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body py-0">
+									<table id="example" class="display table" style="width:100%">
+										<thead>
+											<tr>
+												<th>Image</th>
+												<th>Title</th>
+												<th>Description</th>
+												<th>actions</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for categorie in categories %}
+											<tr>
+												<td><img src="{{ asset('uploads/' ~ categorie.image) }}" class="profilImage"/></td>
+												<td>{{ categorie.title }}</td>
+												<td>{{ categorie.description }}</td>
+												<td>
+													<a href="{{ path('app_categorie_show', {'id': categorie.id}) }}"><i class="icon-eye"></i></a>
+													<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><i class="icon-pencil"></i></a>
+												</td>
+											</tr>
+										{% else %}
+											<tr>
+												<td colspan="5">no records found</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="chart position-relative" id="traffic-sources"></div>
+							</div>
+							<!-- /traffic sources -->
+
+						</div>
+
+						<div class="col-xl-5">
+
+							<!-- Sales stats -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">Plateforme statistics</h6>
+								</div>
+
+								<div class="card-body py-0">
+									<div class="row text-center">
+										<div class="col-4">
+											<div class="mb-3">
+												<h5 class="font-weight-semibold mb-0">{{ items|length }}</h5>
+												<span class="text-muted font-size-sm">Totale items</span>
+											</div>
+										</div>
+
+										<div class="col-4">
+											<div class="mb-3">
+												<h5 class="font-weight-semibold mb-0">{{ users|length }}</h5>
+												<span class="text-muted font-size-sm">Totale of Users</span>
+											</div>
+										</div>
+
+										<div class="col-4">
+											<div class="mb-3">
+												<h5 class="font-weight-semibold mb-0">{{ categories|length }}</h5>
+												<span class="text-muted font-size-sm">Totale Categories</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="chart mb-2" id="app_sales"></div>
+								<div class="chart" id="monthly-sales-stats"></div>
+							</div>
+							<!-- /sales stats -->
+
+							<!-- Sales stats -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">All current users</h6>
+								</div>
+
+								<div class="card-body py-0">
+									<table id="example" class="display table" style="width:100%">
+										<thead>
+											<tr>
+												<th>Profile</th>
+												<th>Username</th>
+												<th>CreatedAt</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for user in users %}
+											<tr>
+												<td><img src="{{ asset('uploads/' ~ user.profile) }}" class="profilImage"/></td>
+												<td>{{ user.username }}</td>             
+												<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+										{% else %}
+											<tr>
+												<td colspan="10">no records found</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="chart mb-2" id="app_sales"></div>
+								<div class="chart" id="monthly-sales-stats"></div>
+							</div>
+							<!-- /sales stats -->
+
+						</div>
+				</div>
+				<!-- /main charts -->
+				{% elseif app.user.roles[0] == 'ROLE_TENANT' %}
+					<!-- Main charts -->
+				<div class="row">
+					<div class="col-xl-7">
+						
+							<!-- Traffic sources -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">Data controller</h6>
+									<div class="header-elements">
+										<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-switchery" checked data-fouc>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body py-0">
+									<div class="row">
+										
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/image/new" class="btn bg-transparent border-teal text-teal rounded-round border-2 btn-icon mr-3">
+													<i class="icon-plus3"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">New Image</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ images|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/item/new" class="btn bg-transparent border-warning-400 text-warning-400 rounded-round border-2 btn-icon mr-3">
+													<i class="icon-plus3"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">New Item</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ items|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="d-flex align-items-center justify-content-center mb-2">
+												<a href="/item" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon mr-3">
+													<i class="icon-list"></i>
+												</a>
+												<div>
+													<div class="font-weight-semibold">Edit Items</div>
+													<span class="text-muted">N ْ&#160;&#160;&#160;&#160;{{ categories|length }}</span>
+												</div>
+											</div>
+											<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+										</div>
+
+										
+									</div>
+								</div>
+
+								<div class="chart position-relative" id="traffic-sources"></div>
+							</div>
+							<!-- /traffic sources -->
+
+							<!-- Traffic sources -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">All elements </h6>
+									<div class="header-elements">
+										<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-switchery" checked data-fouc>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body py-0">
+									<table id="example" class="display table" style="width:100%">
+										<thead>
+											<tr>
+												<th>images</th>
+												<th>Label</th>
+												<th>Price</th>
+												<th>CreatedAt</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for item in items %}
+											<tr>
+												<td>
+													{% for image in item.images %}
+														<img  class="profilImage" src="{{ asset('uploads/' ~ image.path ) }}"/>
+													{% else %}
+														<p colspan="6">no images found</p>
+													{% endfor %}
+												</td>
+												<td>{{ item.label }}</td>
+												<td>{{ item.price }}</td>
+												<td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											
+										{% else %}
+											<tr>
+												<td colspan="6">no records found</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="chart position-relative" id="traffic-sources"></div>
+							</div>
+							<!-- /traffic sources -->
+
+						</div>
+
+						<div class="col-xl-5">
+
+							<!-- Sales stats -->
+							<div class="card">
+								<div class="card-header header-elements-inline">
+									<h6 class="card-title">All Images</h6>
+								</div>
+
+								<div class="card-body py-0">
+
+									<table id="example" class="display table" style="width:100%">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Image</th>
+												<th>actions</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for image in images %}
+											{# {% if (image.author.username == app.user.username or app.user.roles[0] == 'ROLE_USER') %} #}
+											<tr class="imageTable">
+												<td class="imageTable">{{ image.path }}</td> 
+												<td class="imageTable"><img src="{{ asset('uploads/' ~ image.path ) }}" class="profilImage"/></td>
+												<td class="imageTable">
+													<a href="{{ path('app_image_show', {'id': image.id}) }}"><i class="icon-eye"></i></a>
+													<a href="{{ path('app_image_edit', {'id': image.id}) }}"><i class="icon-pencil"></i></a>
+												</td>
+											</tr>
+											{# {% endif %} #}
+										{% else %}
+											<tr>
+												<td colspan="3">no records found</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+
+								</div>
+
+								<div class="chart mb-2" id="app_sales"></div>
+								<div class="chart" id="monthly-sales-stats"></div>
+							</div>
+							<!-- /sales stats -->
+
+						</div>
+				</div>
+				<!-- /main charts -->
+				{% else %}
+					<h1> error </h1>
+				{% endif %}
+			</div>
+			<!-- /content area -->
+
+
+			<!-- Footer -->
+			<div class="navbar navbar-expand-lg navbar-light">
+				<div class="text-center d-lg-none w-100">
+					<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+						<i class="icon-unfold mr-2"></i>
+						Footer
+					</button>
+				</div>
+
+				<div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+						&copy; 2021 - 2022. <a href="#">BIG4COM, MARRAKECH - CITY D'INNOVATION</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">EL ARRAM MOULOUD</a>
+					</span>
+
+					<ul class="navbar-nav ml-lg-auto">
+						<li class="nav-item"><a href="#" class="navbar-nav-link"><i class="icon-lifebuoy mr-2"></i> Support</a></li>
+						<li class="nav-item"><a href="#" class="navbar-nav-link"><i class="icon-file-text2 mr-2"></i> Docs</a></li>
+						<li class="nav-item"><a href="#" class="navbar-nav-link font-weight-semibold"><span class="text-pink-400"><i class="icon-cart2 mr-2"></i> Purchase</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /footer -->
+            
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/mouloud/Desktop/SFE/Code SRC/Symfony/brokerv1/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/mouloud/Desktop/SFE/Code SRC/Symfony/brokerv1/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
+ #}

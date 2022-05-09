@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Image{% endblock %}
+
+{% block body %}
+    <div class="contentPage-headerShow-left">
+    {# <a href="{{ path('app_image_index') }}"><i class="icon-enter5"></i></a>
+    <h1>Create new Image</h1> #}
+    </div>
+    
+
+    {{ include('image/_form.html.twig') }}
+
+    
+{% endblock %}

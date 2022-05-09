@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image{% endblock %}
+
+{% block body %}
+
+    <div class="contentPage-headerShow">
+        <div class="contentPage-headerShow-left">
+            <legend class="text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;"><a href="{{ path('app_image_index') }}"><i class="icon-enter5"></i></a>
+                &nbsp; &nbsp; &nbsp;  Images
+            </legend>
+        </div>
+
+        <div class="contentPage-headerShow-right">
+            <a href="{{ path('app_image_edit', {'id': image.id}) }}"><i class="icon-pencil"></i></a>
+            {{ include('image/_delete_form.html.twig') }}  
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image.id }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ image.path }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/' ~ image.path ) }}" class="profilImage"/></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
