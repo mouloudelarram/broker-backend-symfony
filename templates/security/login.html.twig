@@ -1,0 +1,186 @@
+{% extends 'init.html.twig' %}
+{% block title %}Log in!{% endblock %}
+
+ {% block body %}
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-md navbar-dark">
+		<div class="navbar-brand">
+			<a href="#" class="d-inline-block">
+                <img src="/assets/img/BROKERLOGOfull2.png" alt="broker" style="width: 95px;height: 33px;">
+            </a>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content d-flex justify-content-center align-items-center">
+
+				<!-- Login form -->
+				<form method="post">
+                     {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+					<div class="card mb-0">
+						<div class="card-body">
+							<div class="text-center mb-3">
+								<i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i> 
+                                <h5 class="mb-0">Login to your account</h5>
+								<span class="d-block text-muted">Enter your credentials below</span>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+                               <input type="username" value="{{ last_username }}" placeholder="Username" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+								<div class="form-control-feedback">
+									<i class="icon-user text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+                                <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" autocomplete="current-password" required>
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+							</div>
+
+                            <div class="form-group form-group-feedback form-group-feedback-left">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group"><button class="btn btn-primary btn-block" name="submit" type="submit">Sign in <i class="icon-circle-right2 ml-2"></i></button>
+							</div>
+
+							<div class="text-center">
+								<a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mouloudelarram@gmail.com">I do not have an account?</a>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- /login form -->
+
+			</div>
+			<!-- /content area -->
+
+			<!-- Footer -->
+			<div class="navbar navbar-expand-lg navbar-light">
+				<div class="text-center d-lg-none w-100">
+					<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+						<i class="icon-unfold mr-2"></i>
+						Footer
+					</button>
+				</div>
+
+				<div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+						&copy; 2021 - 2022. BROKER, AT BIG4COM - CITY D'INNOVATION, MARRAKESH  by EL ARRAM MOULOUD
+					</span>
+				</div>
+			</div>
+			<!-- /footer -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+{% endblock %}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# 
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    # }
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+{% endblock %}
+ #}

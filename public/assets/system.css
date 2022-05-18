@@ -1,0 +1,412 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fff;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.1);
+    z-index: 1;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #4b555f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+header > img {
+    width: 30px;
+    height: auto;
+    padding: 10px;
+}
+
+header > H3{
+    padding: 10px;
+    
+}
+
+form{
+    width: auto;
+    width: 90%;
+    max-width: 600px;
+    min-width: 20%;
+    border: 1px solid lightgray;
+    box-shadow: 4px 1px 20px -6px rgba(0,0,0,0.1);
+    margin: auto;
+    font-family: sans-serif;
+    color: #657482;
+    letter-spacing: 1px;
+    font-size: 14px;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+form > .option{
+    text-transform: uppercase;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+a{
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color:  #657482;
+    padding: 20px;
+}
+
+.login{
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+.signup{
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+}
+
+form> .main > h1{
+    font-weight: 1;
+    color:#11161a;;
+    width: 90%;
+    padding: 5%;
+    font-size: 30px;
+    
+}
+
+.detail{
+    margin: auto;
+    font-weight: 5;
+    width: 45%;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 5%;
+}
+
+button, form> .main> h6, input{
+    width: 90%;
+    margin: 2%;
+    padding: 2%;
+}
+
+input{
+    border: 1px solid lightblue;
+    outline: red;
+    border-radius: 5px;
+}
+
+.main > h6{
+    font-weight: 1;
+    font-size: 15px;
+}
+
+button{
+    background-color: #02b3e4;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    text-decoration: none;
+    border: 1px solid lightblue;
+    width: 95%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #fff ;
+    color: #02b3e4;
+}
+
+input:focus {
+    box-shadow: 0 0 0 4px #02b3e4;
+}
+
+.error{
+    color: crimson;
+    width: 100%;
+    font-weight: 1;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+.ForgotPassword{
+    color: #02b3e4;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.ForgotPassword:hover{
+    transform: scale(1.1);
+}
+
+
+.Anonymous{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Anonymous:hover h5 {
+    color: #02b3e4;
+}
+.Anonymous >a{
+    padding: 0;
+    min-width: 30%;
+    width: 30%;
+    text-align: right;
+}
+.Anonymous > h5{
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    flex: 1;
+    color: #fff;
+}
+
+/* profile*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    max-width: 100vw;
+    max-height: 100vh;
+    font-family: sans-serif;
+}
+
+
+header > h3{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8%;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    align-items: center;
+    color: lightblue;
+    cursor: pointer;
+    z-index: -1;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+    background-color: none;
+    box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.1);
+    z-index: 1;
+    margin-bottom: 5%;
+}
+
+
+.userData{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-weight: 1;
+    font-size: 15px;
+}
+.userData > a , .userData >div{
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+}
+
+.userData > h5{
+    padding: 10px;
+}
+.userData > a, .userData >div{
+    padding: 10px;
+}
+
+.userData > a> h5:hover{
+    color: crimson;
+    transform: scale(1);
+}
+
+.userData > .stack> h5:hover{
+    color: #02b3e4;
+    transform: scale(1);
+}
+
+
+header > img {
+    width: 30px;
+    height: auto;
+    padding: 10px;
+    cursor: pointer;
+}
+
+header > h3{
+    color: lightblue;
+    cursor: pointer;
+}
+
+.videos{
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    margin: auto;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.title{
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    padding: 5px;
+    color: #fff;
+}
+.item{
+    position: relative;
+    min-width: 20%;
+    width: 20%;
+    margin: 1%;
+    border-bottom: 1px solid none;
+}
+
+.item:hover .title{
+    color: #000;
+} 
+.video{
+    margin-top: 0;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    min-height: 70%;
+    max-height: 90%;
+    height: 70%;
+    border: 1px solid lightgray;
+}
+
+video{
+    width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+
+
+@media(max-width: 700px){
+    header{
+        height: 10vh;
+        font-family:sans-serif
+    }
+    header> img{
+        width: 20px;
+    }
+    header > h3{
+        font-size: 10px;
+    }
+    .userData  h5{
+        word-break: keep-all;
+        word-wrap: nowrap;
+    }
+    .videos{
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: auto;
+    }
+    .item{
+        min-width: 90%;
+        max-width: 90%;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+    }
+    .title{
+        font-size: 10px;
+        font-weight: 700;
+        font-family: sans-serif;
+        padding: 5px;
+        width: fit-content;
+        block-size: fit-content;
+    }
+}
+
+a{
+    text-decoration: none;
+}
+.remove{
+    position: fixed;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    right: -10px;
+    padding: 5px;
+    background-color: rgb(255, 244, 91);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.remove:hover{
+    transform: scale(1.1);
+    background-color: red;
+}
+
+.logo{
+    width: 95px;
+    height: 33px;
+}
+
+.mb-3{
+    background-color: crimson;
+    color: #fff;
+    padding: 5px;
+}
+
+.mb-3 > a{
+    color:rgb(240, 240, 240);
+}
+
+.mb-3 > a:hover{
+    color:crimson;
+    background-color: #fff;
+}
+
+.checkbox{
+    background-color: rgb(255, 255, 255);
+    color: #657482;
+}

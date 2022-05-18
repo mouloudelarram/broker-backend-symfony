@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Item{% endblock %}
+
+{% block body %}
+     <div class="contentPage-headerShow-left">
+     {# <a href="{{ path('app_item_index') }}"><i class="icon-enter5"></i></a>
+    <h1>Create new Item</h1> #}
+    </div>
+
+    {{ include('item/_form.html.twig') }}
+
+{% endblock %}

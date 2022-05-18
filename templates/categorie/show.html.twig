@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+
+    <div class="contentPage-headerShow">
+
+        <div class="contentPage-headerShow-left">
+            <legend class="text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;"><a href="{{ path('app_categorie_index') }}"><i class="icon-enter5"></i></a>
+                &nbsp; &nbsp; &nbsp;  categorie
+            </legend>
+        </div>
+
+        <div class="contentPage-headerShow-right">
+            <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><i class="icon-pencil"></i></a>
+            {{ include('categorie/_delete_form.html.twig') }}   
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ categorie.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorie.description }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ categorie.image }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/' ~ categorie.image) }}" class="profilImage"/></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

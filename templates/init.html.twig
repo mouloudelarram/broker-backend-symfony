@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {# <link rel="stylesheet" href="/assets/system.css"> #}
+        <!-- Global stylesheets -->
+            <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+            <link href="/global_assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/tableData.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+            <link href="/layout_1/LTR/default/full/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="/layout_1/LTR/default/full/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+            <link href="/layout_1/LTR/default/full/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+            <link href="/layout_1/LTR/default/full/assets/css/components.min.css" rel="stylesheet" type="text/css">
+            <link href="/layout_1/LTR/default/full/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+            
+            
+            <!-- Global stylesheets -->
+            <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+            <link href="/global_assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/components.min.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+            <!-- /global stylesheets -->
+
+            
+                    <!-- /global stylesheets -->
+    {% endblock %}
+    <title>{% block title %}Log In{% endblock %}</title>
+</head>
+<body>
+    {# <header>
+        <img src="/assets/img/BROKERLOGOfull2.png" alt="BROKER" class="logo">
+    </header> #}
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {# <script src="/assets/login.js"></script> #}
+        {#  <script src="/assets/js/tableData.js"></script> #}
+            <!-- Core JS files -->
+            <script src="/global_assets/js/main/jquery.min.js"></script>
+            <script src="/global_assets/js/main/bootstrap.bundle.min.js"></script>
+            <script src="/global_assets/js/plugins/loaders/blockui.min.js"></script>
+            <!-- /core JS files -->
+
+            <!-- Theme JS files -->
+            <script src="/global_assets/js/plugins/velocity/velocity.min.js"></script>
+            <script src="/global_assets/js/plugins/ui/prism.min.js"></script>
+
+            <script src="/layout_1/LTR/default/full/assets/js/app.js"></script>
+            <script src="/global_assets/js/demo_pages/animations_velocity_basic.js"></script>
+            <!-- /theme JS files -->
+            <script src="/assets/js/tableData.js"></script>
+            <!-- Core JS files -->
+            <script src="/global_assets/js/main/jquery.min.js"></script>
+            <script src="/global_assets/js/main/bootstrap.bundle.min.js"></script>
+            <script src="/global_assets/js/plugins/loaders/blockui.min.js"></script>
+            <!-- /core JS files -->
+
+            <!-- Theme JS files -->
+            <script src="/assets/js/app.js"></script>
+    {% endblock %}
+</body>
+</html>

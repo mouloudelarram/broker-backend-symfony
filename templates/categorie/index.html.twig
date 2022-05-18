@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+
+     <div class="contentPage-headerIndex">
+        <h1 class="text-uppercase text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;">categories</h1>
+        <a href="{{ path('app_categorie_new') }}"><i class="icon-add"></i></a>
+    </div> 
+
+    <table id="example" class="display table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td><img src="{{ asset('uploads/' ~ categorie.image) }}" class="profilImage"/></td>
+                <td>{{ categorie.title }}</td>
+                <td>{{ categorie.description }}</td>
+                <td>
+                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}"><i class="icon-eye"></i></a>
+                    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><i class="icon-pencil"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

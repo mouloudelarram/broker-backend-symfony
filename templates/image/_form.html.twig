@@ -1,0 +1,80 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+ #}
+
+{# {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row" style="display: grid; width: 100%; justify-content: center;">
+        <div class="col" style="display: grid; color: #02b3e4; padding: 10px;">
+            {{ form_label(form.path) }}
+            {{ form_widget(form.path) }}
+        </div>
+
+        <div class="col" style="display: grid; width: 50vw; color: #02b3e4; padding: 10px;">
+            {{ form_label(form.item) }}
+            {{ form_widget(form.item) }}
+        </div>
+        <div class="col" style="display: grid; width: 50vw; color: #02b3e4; padding: 10px;">
+        {{ form_errors(form) }}
+        </div>
+        <div class="col" style="display: grid; width: 50vw; color: #02b3e4; padding: 10px;">
+        <button class="btn btn-save">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }} #}
+
+
+
+{{ form_start(form) }}
+    <div class="col" style="display: grid; width: 50vw; color: #02b3e4; padding: 10px;">
+        {{ form_errors(form) }}
+    </div>
+
+    <fieldset class="mb-3">
+        <legend class="text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;"><a href="{{ path('app_image_index') }}"><i class="icon-enter5"></i></a>
+            &nbsp; &nbsp; &nbsp;  Items
+        </legend>
+
+        {# <div class="form-group row">
+            <label class="col-form-label col-form-label-lg col-lg-2">Path</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.path, { 'attr': {'type': 'text', 'class': 'form-control form-control-lg', 'placeholder': "Your Email Address"} }) }}
+            </div>
+        </div> #}
+
+         <div class="form-group row">
+            <label class="col-form-label col-lg-2"> {{ form_label(form.path) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.path, {'attr': {'class' : 'selectField'} }) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2"> {{ form_label(form.item) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.item, {'attr': {'class' : 'selectField'} }) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-lg-2"> {{ form_label(form.author) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.author, {'attr': {'class' : 'selectField'} }) }}
+            </div>
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }} <i class="icon-paperplane ml-2"></i></button>
+        </div>
+    </fieldset>
+
+{{ form_end(form) }}
+
+
+
+

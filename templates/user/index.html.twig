@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <div class="contentPage-headerIndex" >
+        <h1 class="text-uppercase text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;">
+        {% if  role == "ROLE_ADMIN" %} Admins
+        {% elseif  role == "ROLE_TENANT" %} Tenants 
+        {% elseif  role == "ROLE_USER" %} All Users
+        {% endif %}
+        </h1>
+        <a href="/user/{{ role }}/new"><i class="icon-add"></i></a>{#/customer/new {{ role }}/#}
+    </div> 
+
+    <table id="example" class="display table" style="width:100%">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Profile</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Username</th>
+                <th>email</th>
+                <th>Phone</th>
+                <th>Roles</th>
+                {# <th>Password</th> #}
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            {% if ( role == user.roles[0] or role == user.roles[1] ) %}
+            <tr>
+                {# <td>{{ user.id }}</td> #}
+                {# <td>{{ user.profile }}</td> #}
+                <td><img src="{{ asset('uploads/' ~ user.profile) }}" class="profilImage"/></td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                {# <td>{{ user.password }}</td> #}                
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="/user/{{ role }}/{{user.id}}"><i class="icon-eye"></i></a>
+                    <a href="/user/{{ role }}/{{user.id}}/edit"><i class="icon-pencil"></i></a>
+                </td>
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

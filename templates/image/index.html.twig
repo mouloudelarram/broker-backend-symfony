@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image index{% endblock %}
+
+{% block body %}
+    <div class="contentPage-headerIndex">
+        <h1 class="text-uppercase text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;">Images</h1>
+        <a href="{{ path('app_image_new') }}"><i class="icon-add"></i></a>
+    </div> 
+    
+
+    <table id="example" class="display table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            {# {% if (image.author.username == app.user.username or app.user.roles[0] == 'ROLE_USER') %} #}
+            <tr class="imageTable">
+                <td class="imageTable">{{ image.path }}</td> 
+                <td class="imageTable"><img src="{{ asset('uploads/' ~ image.path ) }}" class="profilImage"/></td>
+                <td class="imageTable">
+                    <a href="{{ path('app_image_show', {'id': image.id}) }}"><i class="icon-eye"></i></a>
+                    <a href="{{ path('app_image_edit', {'id': image.id}) }}"><i class="icon-pencil"></i></a>
+                </td>
+            </tr>
+            {# {% endif %} #}
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

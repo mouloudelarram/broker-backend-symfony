@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item index{% endblock %}
+
+{% block body %}
+
+    <div class="contentPage-headerIndex">
+        <h1 class="text-uppercase text-uppercase font-size-sm font-weight-bold" style="color: #2196f3;">Items</h1>
+        <a href="{{ path('app_item_new') }}"><i class="icon-add"></i></a>
+    </div> 
+
+    <table id="example" class="display table" style="width:100%">
+        <thead>
+            <tr>
+                <th>images</th>
+                <th>Label</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+         {#    {% if (item.author == app.user.username or app.user.roles[0] == 'ROLE_USER') %} #}
+            <tr>
+                <td>
+                    {% for image in item.images %}
+                        <img  class="profilImage" src="{{ asset('uploads/' ~ image.path ) }}"/>
+                    {% else %}
+                        <p colspan="6">no images found</p>
+                    {% endfor %}
+                </td>
+                <td>{{ item.label }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_item_show', {'id': item.id}) }}"><i class="icon-eye"></i></a>
+                    <a href="{{ path('app_item_edit', {'id': item.id}) }}"><i class="icon-pencil"></i></a>
+                </td>
+            </tr>
+           {#  {% endif %} #}
+            
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
